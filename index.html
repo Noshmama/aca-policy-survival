@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACA Policy Survival — From Campaign Promise to February 2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #ffffff;
+            color: #222;
+            padding: 48px;
+            max-width: 1060px;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 300;
+            color: #111;
+            margin-bottom: 6px;
+        }
+        h1 span { color: #1a6b94; }
+        .subtitle {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 36px;
+            max-width: 780px;
+        }
+        .era-bar {
+            display: flex;
+            margin-left: 180px;
+            margin-bottom: 12px;
+        }
+        .era {
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 0;
+            border-radius: 3px;
+        }
+        .era-obama { flex: 8; color: #1a5a84; background: rgba(42,106,148,0.1); }
+        .era-trump1 { flex: 2; color: #7a4a1a; background: rgba(160,98,46,0.1); }
+        .era-biden { flex: 2; color: #3a6a2a; background: rgba(74,122,58,0.1); }
+        .era-trump2 { flex: 2; color: #7a4a1a; background: rgba(160,98,46,0.1); }
+        .era + .era { margin-left: 2px; }
+
+        .row {
+            display: flex;
+            align-items: center;
+            height: 38px;
+        }
+        .row:hover .bar { filter: brightness(0.9); }
+        .row:hover .label { color: #000; }
+        .label {
+            width: 180px;
+            flex-shrink: 0;
+            font-size: 14px;
+            color: #444;
+            text-align: right;
+            padding-right: 16px;
+            transition: color 0.15s;
+        }
+        .track {
+            flex: 1;
+            height: 20px;
+            position: relative;
+            background: #f0f0f0;
+            border-radius: 3px;
+        }
+        .bar {
+            height: 100%;
+            border-radius: 3px;
+            position: relative;
+            transition: filter 0.15s;
+        }
+        .bar-note {
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translate(100%, -50%);
+            font-size: 13px;
+            color: #444;
+            white-space: nowrap;
+        }
+        .survived .bar { background: #2a8a4a; }
+        .eroding .bar { background: linear-gradient(90deg, #2a8a4a, #c49a2a); }
+        .partial .bar { background: #c49a2a; }
+        .failed .bar { background: #c04040; }
+        .revived .bar { background: linear-gradient(90deg, #c04040 0%, #c04040 35%, #2a8a4a 45%, #2a8a4a 100%); }
+
+        .section-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #888;
+            margin: 16px 0 6px 180px;
+        }
+
+        .insight {
+            margin-top: 32px;
+            padding: 20px 24px;
+            background: #f7f8fa;
+            border: 1px solid #e0e2e8;
+            border-left: 3px solid #1a6b94;
+            border-radius: 6px;
+            font-size: 15px;
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .insight b { color: #222; }
+        .insight .hed {
+            color: #1a6b94;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .legend {
+            display: flex;
+            gap: 18px;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #555;
+        }
+        .legend-swatch {
+            width: 20px;
+            height: 6px;
+            border-radius: 3px;
+        }
+
+        footer {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #888;
+            line-height: 1.5;
+        }
+        footer a { color: #1a6b94; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<h1>What Survived the <span>ACA</span> Gauntlet</h1>
+<p class="subtitle">Each bar shows how far a policy component made it — from Obama's 2008 campaign through to February 2026. The gauntlet didn't end when the law was signed. It continued through two Trump administrations and a Biden term. Green bars survived. Yellow bars are eroding. Red bars were eliminated.</p>
+
+<div class="legend">
+    <div class="legend-item"><div class="legend-swatch" style="background:#2a8a4a"></div> Intact</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:linear-gradient(90deg,#2a8a4a,#c49a2a)"></div> Eroding</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#c49a2a"></div> Weakened</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#c04040"></div> Eliminated</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:linear-gradient(90deg,#c04040,#2a8a4a)"></div> Revived after elimination</div>
+</div>
+
+<div class="era-bar">
+    <div class="era era-obama">Obama (2009–2017)</div>
+    <div class="era era-trump1">Trump I (2017–21)</div>
+    <div class="era era-biden">Biden (2021–25)</div>
+    <div class="era era-trump2">Trump II (2025–)</div>
+</div>
+
+<div id="chart"></div>
+
+<div class="insight">
+    <div class="hed">The pattern the chart reveals</div>
+    <b>Repeal failed. Erosion is succeeding.</b> The first Trump administration couldn't repeal the ACA outright (the 2017 "skinny repeal" failed by one vote). Instead, it zeroed out the individual mandate penalty. Biden then expanded the law further than Obama ever had — enhanced subsidies pushed enrollment to a record 22.8 million. But Trump II and the One Big Beautiful Bill Act are now unwinding the coverage gains through three mechanisms: letting enhanced subsidies expire (premiums up 114%, ~4–5 million expected to lose coverage), imposing Medicaid work requirements (estimated 5.2 million to lose coverage by 2034), and proposing to replace subsidies with HSA direct payments and catastrophic plans. The legal architecture of the ACA still stands. But the coverage it provides is contracting.
+</div>
+
+<div class="insight">
+    <div class="hed">What the oral history witnesses couldn't have foreseen</div>
+    The Obama-era witnesses described a law that survived serial near-death experiences through passage and legal challenge. What the chart now shows is a <b>third phase of attrition</b> they didn't anticipate: not repeal, but defunding. The components they fought hardest to include (subsidies, Medicaid expansion) are being hollowed out not by legislation that removes them from the statute books, but by legislation that removes the money that makes them work. Preexisting condition protections — the "quiet survivor" that generated the fewest oral history clips because nobody contested it — remain legally intact. But a protection you can't afford to use is a protection in name only.
+</div>
+
+<div class="insight">
+    <div class="hed">The one component that came back from the dead</div>
+    Drug price negotiation is the only red bar on the chart that turns green again. Obama promised it during the 2008 campaign, then traded it away in the PhRMA deal to secure industry support for the ACA — a move that Sebelius testified left him "very noticeably agitated." The policy was dead for over a decade. Then Biden's Inflation Reduction Act (2022) partially revived it, allowing Medicare to negotiate prices on a limited set of high-cost drugs for the first time. It's the one case where a policy sacrificed for strategic reasons during the Obama era was eventually recovered by a later administration. The oral history witnesses who described the PhRMA deal as a painful but necessary trade couldn't have known the trade would eventually be partially reversed — or that it would take 13 years.
+</div>
+
+<footer>
+    <p style="margin-bottom: 12px;"><b style="color:#555;">Sources</b></p>
+    <p style="margin-bottom: 6px;"><b style="color:#555;">Obama era (2008–2017):</b></p>
+    <ul style="margin-left: 20px; margin-bottom: 14px;">
+        <li><a href="https://obamaoralhistory.columbia.edu/" target="_blank">Obama Presidency Oral History</a> — Incite at Columbia University. 462 interviews, ~1,100 hours (2019–2023)</li>
+    </ul>
+    <p style="margin-bottom: 6px;"><b style="color:#555;">Trump I, Biden, and Trump II eras (2017–2026):</b></p>
+    <ul style="margin-left: 20px; margin-bottom: 14px;">
+        <li><a href="https://www.kff.org/affordable-care-act/aca-marketplace-premium-payments-would-more-than-double-on-average-next-year-if-enhanced-premium-tax-credits-expire/" target="_blank">KFF: ACA Marketplace Premium Payments Would More Than Double if Enhanced Credits Expire</a></li>
+        <li><a href="https://www.kff.org/affordable-care-act/aca-marketplace-enrollment-is-down-in-2026-but-all-of-the-data-isnt-in-yet/" target="_blank">KFF: ACA Marketplace Enrollment Is Down in 2026</a></li>
+        <li><a href="https://www.kff.org/medicaid/a-closer-look-at-the-work-requirement-provisions-in-the-2025-federal-budget-reconciliation-law/" target="_blank">KFF: A Closer Look at Medicaid Work Requirement Provisions</a></li>
+        <li><a href="https://www.kff.org/medicaid/medicaid-what-to-watch-in-2026/" target="_blank">KFF: Medicaid — What to Watch in 2026</a></li>
+        <li><a href="https://www.congress.gov/crs-product/R48290" target="_blank">Congressional Research Service: Enhanced Premium Tax Credit and 2026 Exchange Premiums FAQ</a></li>
+        <li><a href="https://www.ama-assn.org/health-care-advocacy/federal-advocacy/changes-medicaid-aca-and-other-key-provisions-one-big" target="_blank">AMA: Changes to Medicaid, ACA, and Key Provisions of the One Big Beautiful Bill Act</a></li>
+        <li><a href="https://www.ama-assn.org/health-care-advocacy/federal-advocacy/4-big-beautiful-bill-changes-will-reshape-care-2026" target="_blank">AMA: 4 "Big, Beautiful Bill" Changes That Will Reshape Care in 2026</a></li>
+        <li><a href="https://www.crfb.org/blogs/white-house-releases-great-healthcare-plan" target="_blank">CRFB: White House Releases "Great Healthcare Plan"</a></li>
+        <li><a href="https://www.npr.org/2026/01/01/g-s1-104216/obamacare-subsidies-congress-peter-welch" target="_blank">NPR: Affordable Care Act Subsidies Have Expired</a></li>
+        <li><a href="https://www.npr.org/2026/01/08/nx-s1-5662625/house-vote-affordable-care-act-subsidies" target="_blank">NPR: House Votes to Renew ACA Subsidies</a></li>
+        <li><a href="https://www.cnbc.com/2026/02/04/millions-may-drop-aca-coverage-and-raise-health-costs-for-everyone-else.html" target="_blank">CNBC: Millions May Drop ACA Coverage — And Raise Health Costs for Everyone Else</a></li>
+        <li><a href="https://www.cnbc.com/2026/01/13/enhanced-aca-subsidies-lapse-uninsured.html" target="_blank">CNBC: As Enhanced ACA Subsidies Lapse, Millions Poised to Drop Health Insurance</a></li>
+        <li><a href="https://www.cnbc.com/2026/01/15/trump-direct-payments-health-care.html" target="_blank">CNBC: Trump Pitches Direct Payments to Consumers for Health Care</a></li>
+        <li><a href="https://www.cbsnews.com/news/trump-aca-subsidies-health-insurance-affordable-care-act-congress/" target="_blank">CBS News: With ACA Subsidies Set to Expire, Millions Stand to Lose Health Insurance</a></li>
+        <li><a href="https://www.nbcnews.com/politics/congress/obamacare-premium-subsidies-likely-expire-trump-opposes-extension-rcna244650" target="_blank">NBC News: Obamacare Tax Credits Look Likely to Expire as Trump Rules Out Extension</a></li>
+        <li><a href="https://kffhealthnews.org/news/article/aca-trump-proposal-catastrophic-coverage-premiums-care-networks/" target="_blank">KFF Health News: Trump Team's Planned ACA Rule — Catastrophic Coverage</a></li>
+        <li><a href="https://www.ajmc.com/view/trump-announces-the-great-healthcare-plan-proposing-direct-payments-price-transparency-insurance-reform" target="_blank">AJMC: Trump Announces "The Great Healthcare Plan"</a></li>
+        <li><a href="https://www.ajmc.com/view/medicaid-work-requirements-set-to-leave-millions-without-insurance" target="_blank">AJMC: Medicaid Work Requirements Set to Leave Millions Without Insurance</a></li>
+        <li><a href="https://www.cbpp.org/blog/people-who-rely-on-the-aca-marketplaces-face-mounting-affordability-challenges" target="_blank">CBPP: People Who Rely on ACA Marketplaces Face Mounting Affordability Challenges</a></li>
+        <li><a href="https://www.urban.org/urban-wire/medicaid-cuts-one-big-beautiful-bill-act-leave-3-10-young-adults-vulnerable-losing" target="_blank">Urban Institute: Medicaid Cuts in the One Big Beautiful Bill Act</a></li>
+        <li><a href="https://bipartisanpolicy.org/explainer/the-2025-tax-debate-the-affordable-care-act-individual-mandate-in-tcja/" target="_blank">Bipartisan Policy Center: The ACA Individual Mandate in TCJA</a></li>
+        <li><a href="https://ccf.georgetown.edu/2025/11/10/the-future-of-acas-medicaid-expansion-what-do-changes-in-hr1-mean/" target="_blank">Georgetown CCF: The Future of ACA's Medicaid Expansion</a></li>
+    </ul>
+    <p>Updated February 2026.</p>
+</footer>
+
+<script>
+const items = [
+    { section: 'STILL STANDING' },
+    { label: 'Preexisting conditions', pct: 100, cls: 'survived', note: 'Legally intact — but premiums soaring' },
+    { label: 'Employer mandate', pct: 100, cls: 'survived', note: 'Still in effect' },
+
+    { section: 'ERODING NOW' },
+    { label: 'Insurance exchanges', pct: 95, cls: 'eroding', note: 'Operating, but enrollment falling — down 1M+' },
+    { label: 'Premium subsidies', pct: 91, cls: 'eroding', note: 'Enhanced subsidies expired Dec 2025; premiums +114%' },
+    { label: 'Medicaid expansion', pct: 88, cls: 'eroding', note: 'Work requirements coming Jan 2027; est. 5.2M to lose coverage' },
+    { label: 'Abortion coverage', pct: 82, cls: 'partial', note: 'Executive order still in effect' },
+
+    { section: 'ALREADY GONE' },
+    { label: 'Individual mandate', pct: 72, cls: 'failed', note: 'Penalty zeroed by Trump I (2017); permanent' },
+    { label: 'Cost containment', pct: 62, cls: 'failed', note: 'IPAB repealed 2018; Cadillac tax repealed 2019' },
+    { label: 'Long-term care (CLASS Act)', pct: 55, cls: 'failed', note: 'Kennedy\'s voluntary federal insurance program; abandoned as unsustainable' },
+    { label: 'Malpractice reform', pct: 50, cls: 'failed', note: 'Token pilot programs; dead' },
+
+    { section: 'ELIMINATED DURING PASSAGE' },
+    { label: 'Public option', pct: 30, cls: 'failed', note: 'Killed in Senate (Lieberman)' },
+    { label: 'Drug price negotiation', pct: 27, cls: 'revived', note: 'Traded in PhRMA deal; partially revived by IRA 2022' },
+    { label: 'Single payer', pct: 7, cls: 'failed', note: 'Never on the table' },
+];
+
+const chart = document.getElementById('chart');
+
+items.forEach(item => {
+    if (item.section) {
+        const lbl = document.createElement('div');
+        lbl.className = 'section-label';
+        lbl.textContent = item.section;
+        chart.appendChild(lbl);
+        return;
+    }
+    const row = document.createElement('div');
+    row.className = `row ${item.cls}`;
+    row.innerHTML = `
+        <div class="label">${item.label}</div>
+        <div class="track">
+            <div class="bar" style="width:${item.pct}%">
+                <span class="bar-note">${item.note}</span>
+            </div>
+        </div>
+    `;
+    chart.appendChild(row);
+});
+</script>
+
+</body>
+</html>
