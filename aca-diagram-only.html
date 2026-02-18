@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACA Policy Survival — Diagram Only</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #ffffff;
+            color: #222;
+            padding: 48px;
+            max-width: 1060px;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 300;
+            color: #111;
+            margin-bottom: 6px;
+        }
+        h1 span { color: #1a6b94; }
+        .subtitle {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 36px;
+            max-width: 780px;
+        }
+        .era-bar {
+            display: flex;
+            margin-left: 180px;
+            margin-bottom: 12px;
+        }
+        .era {
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 0;
+            border-radius: 3px;
+        }
+        .era-obama { flex: 8; color: #1a5a84; background: rgba(42,106,148,0.1); }
+        .era-trump1 { flex: 2; color: #7a4a1a; background: rgba(160,98,46,0.1); }
+        .era-biden { flex: 2; color: #3a6a2a; background: rgba(74,122,58,0.1); }
+        .era-trump2 { flex: 2; color: #7a4a1a; background: rgba(160,98,46,0.1); }
+        .era + .era { margin-left: 2px; }
+
+        .row {
+            display: flex;
+            align-items: center;
+            height: 38px;
+        }
+        .label {
+            width: 180px;
+            flex-shrink: 0;
+            font-size: 14px;
+            color: #444;
+            text-align: right;
+            padding-right: 16px;
+        }
+        .track {
+            flex: 1;
+            height: 20px;
+            position: relative;
+            background: #f0f0f0;
+            border-radius: 3px;
+        }
+        .bar {
+            height: 100%;
+            border-radius: 3px;
+            position: relative;
+        }
+        .bar-note {
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translate(100%, -50%);
+            font-size: 13px;
+            color: #444;
+            white-space: nowrap;
+        }
+        .survived .bar { background: #2a8a4a; }
+        .eroding .bar { background: linear-gradient(90deg, #2a8a4a, #c49a2a); }
+        .partial .bar { background: #c49a2a; }
+        .failed .bar { background: #c04040; }
+        .revived .bar { background: linear-gradient(90deg, #c04040 0%, #c04040 35%, #2a8a4a 45%, #2a8a4a 100%); }
+
+        .section-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #888;
+            margin: 16px 0 6px 180px;
+        }
+
+        .legend {
+            display: flex;
+            gap: 18px;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #555;
+        }
+        .legend-swatch {
+            width: 20px;
+            height: 6px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>What Survived the <span>ACA</span> Gauntlet</h1>
+<p class="subtitle">Each bar shows how far a policy component made it — from Obama's 2008 campaign through to February 2026. The gauntlet didn't end when the law was signed. It continued through two Trump administrations and a Biden term. Green bars survived. Yellow bars are eroding. Red bars were eliminated.</p>
+
+<div class="legend">
+    <div class="legend-item"><div class="legend-swatch" style="background:#2a8a4a"></div> Intact</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:linear-gradient(90deg,#2a8a4a,#c49a2a)"></div> Eroding</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#c49a2a"></div> Weakened</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#c04040"></div> Eliminated</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:linear-gradient(90deg,#c04040,#2a8a4a)"></div> Revived after elimination</div>
+</div>
+
+<div class="era-bar">
+    <div class="era era-obama">Obama (2009–2017)</div>
+    <div class="era era-trump1">Trump I (2017–21)</div>
+    <div class="era era-biden">Biden (2021–25)</div>
+    <div class="era era-trump2">Trump II (2025–)</div>
+</div>
+
+<div id="chart"></div>
+
+<script>
+const items = [
+    { section: 'STILL STANDING' },
+    { label: 'Preexisting conditions', pct: 100, cls: 'survived', note: 'Legally intact — but premiums soaring' },
+    { label: 'Employer mandate', pct: 100, cls: 'survived', note: 'Still in effect' },
+
+    { section: 'ERODING NOW' },
+    { label: 'Insurance exchanges', pct: 95, cls: 'eroding', note: 'Operating, but enrollment falling — down 1M+' },
+    { label: 'Premium subsidies', pct: 91, cls: 'eroding', note: 'Enhanced subsidies expired Dec 2025; premiums +114%' },
+    { label: 'Medicaid expansion', pct: 88, cls: 'eroding', note: 'Work requirements coming Jan 2027; est. 5.2M to lose coverage' },
+    { label: 'Abortion coverage', pct: 82, cls: 'partial', note: 'Executive order still in effect' },
+
+    { section: 'ALREADY GONE' },
+    { label: 'Individual mandate', pct: 72, cls: 'failed', note: 'Penalty zeroed by Trump I (2017); permanent' },
+    { label: 'Cost containment', pct: 62, cls: 'failed', note: 'IPAB repealed 2018; Cadillac tax repealed 2019' },
+    { label: 'Long-term care (CLASS Act)', pct: 55, cls: 'failed', note: 'Kennedy\'s voluntary federal insurance program; abandoned as unsustainable' },
+    { label: 'Malpractice reform', pct: 50, cls: 'failed', note: 'Token pilot programs; dead' },
+
+    { section: 'ELIMINATED DURING PASSAGE' },
+    { label: 'Public option', pct: 30, cls: 'failed', note: 'Killed in Senate (Lieberman)' },
+    { label: 'Drug price negotiation', pct: 27, cls: 'revived', note: 'Traded in PhRMA deal; partially revived by IRA 2022' },
+    { label: 'Single payer', pct: 7, cls: 'failed', note: 'Never on the table' },
+];
+
+const chart = document.getElementById('chart');
+
+items.forEach(item => {
+    if (item.section) {
+        const lbl = document.createElement('div');
+        lbl.className = 'section-label';
+        lbl.textContent = item.section;
+        chart.appendChild(lbl);
+        return;
+    }
+    const row = document.createElement('div');
+    row.className = `row ${item.cls}`;
+    row.innerHTML = `
+        <div class="label">${item.label}</div>
+        <div class="track">
+            <div class="bar" style="width:${item.pct}%">
+                <span class="bar-note">${item.note}</span>
+            </div>
+        </div>
+    `;
+    chart.appendChild(row);
+});
+</script>
+
+</body>
+</html>
